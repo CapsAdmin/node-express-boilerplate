@@ -10,3 +10,6 @@ yarn-error.log
 
 # Code coverage
 coverage
+
+# Typescript build directory
+built

@@ -3,7 +3,7 @@
   "version": "1.7.0",
   "description": "Create a Node.js app for building production-ready RESTful APIs using Express, by running one command",
   "bin": "bin/createNodejsApp.js",
-  "main": "src/index.js",
+  "main": "src/index.ts",
   "repository": "https://github.com/hagopj13/node-express-boilerplate.git",
   "author": "Hagop Jamkojian <hagopj13@gmail.com>",
   "license": "MIT",
@@ -11,8 +11,9 @@
     "node": ">=12.0.0"
   },
   "scripts": {
+    "build": "tsc",
     "start": "pm2 start ecosystem.config.json --no-daemon",
-    "dev": "cross-env NODE_ENV=development nodemon src/index.js",
+    "dev": "cross-env NODE_ENV=development nodemon built/index.js",
     "test": "jest -i --colors --verbose --detectOpenHandles",
     "test:watch": "jest -i --watchAll",
     "coverage": "jest -i --coverage",
@@ -75,6 +76,8 @@
     "xss-clean": "^0.1.1"
   },
   "devDependencies": {
+    "@babel/preset-env": "^7.14.0",
+    "@babel/preset-typescript": "^7.13.0",
     "coveralls": "^3.0.7",
     "eslint": "^7.0.0",
     "eslint-config-airbnb-base": "^14.0.0",
@@ -90,6 +93,7 @@
     "node-mocks-http": "^1.8.0",
     "nodemon": "^2.0.0",
     "prettier": "^2.0.5",
-    "supertest": "^6.0.1"
+    "supertest": "^6.0.1",
+    "typescript": "^4.2.4"
   }
 }
