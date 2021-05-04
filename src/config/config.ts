@@ -2,7 +2,15 @@ const dotenv = require('dotenv');
 const path = require('path');
 const Joi = require('joi');
 
-dotenv.config({ path: path.join(__dirname, '../../.env') });
+// relative to /built/src
+let envPath = path.join(__dirname, '../../../.env')
+
+// jest is relative to /src
+if (!existsSync(envPath)) {
+  envPath = path.join(__dirname, '../../.env')
+}
+
+dotenv.config({ path: envPath });
 
 const envVarsSchema = Joi.object()
   .keys({
