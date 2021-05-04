@@ -1466,11 +1466,6 @@
   resolved "https://registry.yarnpkg.com/@types/bcrypt/-/bcrypt-3.0.1.tgz#9c767594e31aa1c4ce78d23aa4351984403ca28f"
   integrity sha512-SwBrq5wb6jXP0o3O3jStdPWbKpimTImfdFD/OZE3uW+jhGpds/l5wMX9lfYOTDOa5Bod2QmOgo9ln+tMp2XP/w==
 
-"@types/bcryptjs@^2.3.30":
-  version "2.3.30"
-  resolved "https://registry.yarnpkg.com/@types/bcryptjs/-/bcryptjs-2.3.30.tgz#4338303e69765a4ec918bcd98485cedcaa6541eb"
-  integrity sha1-QzgwPml2Wk7JGLzZhIXO3KplQes=
-
 "@types/body-parser@*":
   version "1.19.0"
   resolved "https://registry.yarnpkg.com/@types/body-parser/-/body-parser-1.19.0.tgz#0685b3c47eb3006ffed117cdd55164b61f80538f"
@@ -1509,6 +1504,13 @@
   version "2.8.10"
   resolved "https://registry.yarnpkg.com/@types/cors/-/cors-2.8.10.tgz#61cc8469849e5bcdd0c7044122265c39cec10cf4"
   integrity sha512-C7srjHiVG3Ey1nR6d511dtDkCEjxuN9W1HWAEjGq8kpcwmNM6JJkpC0xvabM7BXTG2wDq8Eu33iH9aQKa7IvLQ==
+
+"@types/express-mongo-sanitize@^1.3.2":
+  version "1.3.2"
+  resolved "https://registry.yarnpkg.com/@types/express-mongo-sanitize/-/express-mongo-sanitize-1.3.2.tgz#b11fb8031a4572bc55c1d3db04e4102f745afe6c"
+  integrity sha512-h1v1oqTKwPlwHS4bakmSELTwFpQ2YdXxL7THm4keHFtpc1ZgsoTdKSjk5zWOJKgRWDuOmCpRBmBSGcAIAUQagA==
+  dependencies:
+    "@types/express" "*"
 
 "@types/express-rate-limit@^5.1.1":
   version "5.1.1"
@@ -1723,6 +1725,14 @@
   integrity sha512-uci4Esokrw9qGb9bvhhSVEjd6rkny/dk5PK/Qz4yxKiyppEI+dOPlNrZBahE3i+PoKFYyDxChVXZ/ysS/nrm1Q==
   dependencies:
     "@types/superagent" "*"
+
+"@types/swagger-ui-express@^4.1.2":
+  version "4.1.2"
+  resolved "https://registry.yarnpkg.com/@types/swagger-ui-express/-/swagger-ui-express-4.1.2.tgz#cfc884904a104c3193f46f423d04ee0416be1ef4"
+  integrity sha512-t9teFTU8dKe69rX9EwL6OM2hbVquYdFM+sQ0REny4RalPlxAm+zyP04B12j4c7qEuDS6CnlwICywqWStPA3v4g==
+  dependencies:
+    "@types/express" "*"
+    "@types/serve-static" "*"
 
 "@types/validator@^13.0.0":
   version "13.1.3"
