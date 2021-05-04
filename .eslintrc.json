@@ -3,8 +3,16 @@
     "node": true,
     "jest": true
   },
+  "parser": "@typescript-eslint/parser",
   "extends": ["airbnb-base", "plugin:jest/recommended", "plugin:security/recommended", "plugin:prettier/recommended"],
-  "plugins": ["jest", "security", "prettier"],
+  "plugins": ["@typescript-eslint", "jest", "security", "prettier"],
+  "settings": {
+    "import/resolver": {
+      "node": {
+        "extensions": [".js", ".ts"]
+      }
+    }
+  },
   "parserOptions": {
     "ecmaVersion": 2018
   },
@@ -14,6 +22,7 @@
     "no-underscore-dangle": "off",
     "consistent-return": "off",
     "jest/expect-expect": "off",
-    "security/detect-object-injection": "off"
+    "security/detect-object-injection": "off",
+    "import/extensions": "off"
   }
 }
