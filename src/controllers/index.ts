@@ -1,2 +1,5 @@
-module.exports.authController = require('./auth.controller');
-module.exports.userController = require('./user.controller');
+import auth from './auth.controller';
+import user from './user.controller';
+
+export { auth as authController };
+export { user as userController };

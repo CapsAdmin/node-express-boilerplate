@@ -1,2 +1,5 @@
-module.exports.authValidation = require('./auth.validation');
-module.exports.userValidation = require('./user.validation');
+import auth from './auth.validation';
+import user from './user.validation';
+
+export { auth as authValidation };
+export { user as userValidation };

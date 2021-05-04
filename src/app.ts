@@ -1,18 +1,19 @@
-const express = require('express');
-const helmet = require('helmet');
+import * as express from 'express';
+import * as helmet from 'helmet';
+import * as mongoSanitize from 'express-mongo-sanitize';
+import * as compression from 'compression';
+import * as cors from 'cors';
+import * as passport from 'passport';
+import * as httpStatus from 'http-status';
+import config from './config/config';
+import morgan from './config/morgan';
+import { jwtStrategy } from './config/passport';
+import { authLimiter } from './middlewares/rateLimiter';
+import routes from './routes/v1/index';
+import { errorConverter, errorHandler } from './middlewares/error';
+import ApiError from './utils/ApiError';
+
 const xss = require('xss-clean');
-const mongoSanitize = require('express-mongo-sanitize');
-const compression = require('compression');
-const cors = require('cors');
-const passport = require('passport');
-const httpStatus = require('http-status');
-const config = require('./config/config');
-const morgan = require('./config/morgan');
-const { jwtStrategy } = require('./config/passport');
-const { authLimiter } = require('./middlewares/rateLimiter');
-const routes = require('./routes/v1');
-const { errorConverter, errorHandler } = require('./middlewares/error');
-const ApiError = require('./utils/ApiError');
 
 const app = express();
 
@@ -63,5 +64,4 @@ app.use(errorConverter);
 
 // handle error
 app.use(errorHandler);
-
-module.exports = app;
+export default app;

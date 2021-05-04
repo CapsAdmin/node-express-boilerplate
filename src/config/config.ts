@@ -1,6 +1,7 @@
-const dotenv = require('dotenv');
-const path = require('path');
-const Joi = require('joi');
+import * as dotenv from 'dotenv';
+import * as path from 'path';
+import * as Joi from 'joi';
+import {existsSync} from "fs"
 
 // relative to /built/src
 let envPath = path.join(__dirname, '../../../.env')
@@ -39,34 +40,38 @@ const { value: envVars, error } = envVarsSchema.prefs({ errors: { label: 'key' }
 if (error) {
   throw new Error(`Config validation error: ${error.message}`);
 }
-
-module.exports = {
-  env: envVars.NODE_ENV,
-  port: envVars.PORT,
-  mongoose: {
-    url: envVars.MONGODB_URL + (envVars.NODE_ENV === 'test' ? '-test' : ''),
-    options: {
-      useCreateIndex: true,
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
+const env = envVars.NODE_ENV as 'production' | 'development' | 'test';
+const port = envVars.PORT as number;
+const mongoose = {
+  url: envVars.MONGODB_URL + (envVars.NODE_ENV === 'test' ? '-test' : ''),
+  options: {
+    useCreateIndex: true,
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  },
+};
+const jwt = {
+  secret: envVars.JWT_SECRET as string,
+  accessExpirationMinutes: envVars.JWT_ACCESS_EXPIRATION_MINUTES as number,
+  refreshExpirationDays: envVars.JWT_REFRESH_EXPIRATION_DAYS as number,
+  resetPasswordExpirationMinutes: envVars.JWT_RESET_PASSWORD_EXPIRATION_MINUTES as number,
+  verifyEmailExpirationMinutes: envVars.JWT_VERIFY_EMAIL_EXPIRATION_MINUTES as number,
+};
+const email = {
+  smtp: {
+    host: envVars.SMTP_HOST as string,
+    port: envVars.SMTP_PORT as number,
+    auth: {
+      user: envVars.SMTP_USERNAME as string,
+      pass: envVars.SMTP_PASSWORD as string,
     },
   },
-  jwt: {
-    secret: envVars.JWT_SECRET,
-    accessExpirationMinutes: envVars.JWT_ACCESS_EXPIRATION_MINUTES,
-    refreshExpirationDays: envVars.JWT_REFRESH_EXPIRATION_DAYS,
-    resetPasswordExpirationMinutes: envVars.JWT_RESET_PASSWORD_EXPIRATION_MINUTES,
-    verifyEmailExpirationMinutes: envVars.JWT_VERIFY_EMAIL_EXPIRATION_MINUTES,
-  },
-  email: {
-    smtp: {
-      host: envVars.SMTP_HOST,
-      port: envVars.SMTP_PORT,
-      auth: {
-        user: envVars.SMTP_USERNAME,
-        pass: envVars.SMTP_PASSWORD,
-      },
-    },
-    from: envVars.EMAIL_FROM,
-  },
+  from: envVars.EMAIL_FROM as string,
+};
+export default {
+  env,
+  port,
+  mongoose,
+  jwt,
+  email,
 };

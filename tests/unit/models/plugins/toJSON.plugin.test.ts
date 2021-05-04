@@ -1,5 +1,5 @@
-const mongoose = require('mongoose');
-const { toJSON } = require('../../../../src/models/plugins');
+import * as mongoose from 'mongoose';
+import { toJSON } from '../../../../src/models/plugins/index';
 
 describe('toJSON plugin', () => {
   let connection;
